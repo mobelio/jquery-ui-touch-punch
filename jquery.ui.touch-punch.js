@@ -29,7 +29,10 @@
    * @param {String} simulatedType The corresponding mouse event
    */
   function simulateMouseEvent (event, simulatedType) {
-
+	  
+    var eventDocument = event.target.ownerDocument;
+    var eventWindow = eventDocument.defaultView;
+	
     // Ignore multi-touch events
     if (event.originalEvent.touches.length > 1) {
       return;
@@ -45,7 +48,7 @@
       simulatedType,    // type
       true,             // bubbles                    
       true,             // cancelable                 
-      window,           // view                       
+      eventWindow,      // view                       
       1,                // detail                     
       touch.screenX,    // screenX                    
       touch.screenY,    // screenY                    
